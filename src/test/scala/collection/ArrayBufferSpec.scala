@@ -4,9 +4,7 @@ import testing.BaseSpec
 
 import scala.collection.mutable.ArrayBuffer
 
-/** ArrayBuffer
-  *
-  * https://www.scala-lang.org/api/current/scala/collection/mutable/ArrayBuffer.html
+/** [[https://www.scala-lang.org/api/current/scala/collection/mutable/ArrayBuffer.html ArrayBuffer]]
   *  - mutable
   *  - variable-length
   */

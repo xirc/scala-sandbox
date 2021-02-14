@@ -2,9 +2,7 @@ package collection
 
 import testing.BaseSpec
 
-/** Array
-  *
-  * https://www.scala-lang.org/api/current/scala/Array.html
+/** [[https://www.scala-lang.org/api/current/scala/Array.html Array]]
   *  - mutable
   *  - fixed length
   */
