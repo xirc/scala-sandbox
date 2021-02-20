@@ -32,9 +32,9 @@ final class PriorityQueueSpec extends BaseSpec {
       queue.enqueue(Item("ice", 1))
       queue.enqueue(Item("car", 1000))
 
-      queue.dequeue shouldBe Item("car", 1000)
-      queue.dequeue shouldBe Item("toy", 12)
-      queue.dequeue shouldBe Item("ice", 1)
+      queue.dequeue() shouldBe Item("car", 1000)
+      queue.dequeue() shouldBe Item("toy", 12)
+      queue.dequeue() shouldBe Item("ice", 1)
     }
 
     "take a custom implicit ordering" in {
@@ -49,12 +49,12 @@ final class PriorityQueueSpec extends BaseSpec {
       queue.enqueue(Item("car", 1000))
       queue.enqueue(Item("car", 2000))
 
-      queue.dequeue shouldBe Item("car", 2000)
-      queue.dequeue shouldBe Item("car", 1000)
-      queue.dequeue shouldBe Item("bike", 2)
-      queue.dequeue shouldBe Item("bike", 1)
-      queue.dequeue shouldBe Item("ace", 12)
-      queue.dequeue shouldBe Item("ace", 2)
+      queue.dequeue() shouldBe Item("car", 2000)
+      queue.dequeue() shouldBe Item("car", 1000)
+      queue.dequeue() shouldBe Item("bike", 2)
+      queue.dequeue() shouldBe Item("bike", 1)
+      queue.dequeue() shouldBe Item("ace", 12)
+      queue.dequeue() shouldBe Item("ace", 2)
     }
 
   }
