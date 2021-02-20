@@ -1,6 +1,12 @@
-ThisBuild / name := "scala-sandbox"
-ThisBuild / version := "0.1"
-ThisBuild / scalaVersion := "2.13.4"
+name := "scala-sandbox"
+version := "0.1"
+scalaVersion := "2.13.4"
+
+ThisBuild / scalacOptions ++= Seq(
+  "-deprecation",
+  "-unchecked",
+  "-Xlint",
+)
 
 ThisBuild / libraryDependencies ++= Seq(
   "org.scalactic" %% "scalactic" % "3.2.2",
