@@ -18,6 +18,16 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: Cache sbt
+      uses: actions/cache@v2
+      env:
+        cache-name: sbt-cache
+      with:
+        path: ~/.sbt
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.run_id }}
+        restore-keys: |
+          ${{ runner.os }}-${{ env.cache-name }}-
+
     - name: Cache coursier cache
       uses: actions/cache@v2
       env:
@@ -26,7 +36,7 @@ jobs:
         path: ~/.cache/coursier
         key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.run_id }}
         restore-keys: |
-          ${{ runner.os }}-${{ env.cache-name }}
+          ${{ runner.os }}-${{ env.cache-name }}-
 
     - name: Run All Check
       run: sbt ciCheck
