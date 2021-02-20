@@ -13,3 +13,14 @@ ThisBuild / libraryDependencies ++= Seq(
   "org.scalactic" %% "scalactic" % "3.2.5",
   "org.scalatest" %% "scalatest" % "3.2.2" % "test"
 )
+
+addCommandAlias(
+  "ciCheck",
+  Seq(
+    "clean",
+    "scalafmtSbtCheck",
+    "scalafmtCheckAll",
+    "test:compile",
+    "test"
+  ).mkString(";")
+)
