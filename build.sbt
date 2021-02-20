@@ -6,6 +6,7 @@ ThisBuild / scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
   "-Xlint",
+  "-Werror"
 )
 
 ThisBuild / libraryDependencies ++= Seq(
