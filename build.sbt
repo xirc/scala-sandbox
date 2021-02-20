@@ -10,7 +10,7 @@ ThisBuild / scalacOptions ++= Seq(
 )
 
 ThisBuild / libraryDependencies ++= Seq(
-  "org.scalactic" %% "scalactic" % "3.2.2",
+  "org.scalactic" %% "scalactic" % "3.2.5",
   "org.scalatest" %% "scalatest" % "3.2.2" % "test"
 )
 
