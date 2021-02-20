@@ -24,9 +24,9 @@ jobs:
         cache-name: sbt-coursier-cache
       with:
         path: ~/.cache/coursier
-        key: ${{ runner.os }}-${{ env.sbt-coursier-cache }}-${{ github.run_id }}
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.run_id }}
         restore-keys: |
-          ${{ runner.os }}-${{ env.sbt-coursier-cache }}
+          ${{ runner.os }}-${{ env.cache-name }}
 
     - name: Run All Check
       run: sbt ciCheck
