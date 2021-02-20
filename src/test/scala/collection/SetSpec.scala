@@ -70,4 +70,9 @@ final class SetSpec extends BaseSpec {
     c shouldBe (a diff b)
   }
 
+  "default set implementation is HashSet" in {
+    val s = mutable.Set(1, 2, 3)
+    s shouldBe a[mutable.HashSet[_]]
+  }
+
 }
