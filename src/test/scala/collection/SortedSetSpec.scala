@@ -59,4 +59,9 @@ final class SortedSetSpec extends BaseSpec {
     s shouldBe (s1 diff s2)
   }
 
+  "default SortedSet implementation is TreeSet" in {
+    val s = mutable.SortedSet(1, 2, 3)
+    s shouldBe a[mutable.TreeSet[_]]
+  }
+
 }
