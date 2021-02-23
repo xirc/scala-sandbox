@@ -58,4 +58,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.findLast(_ < 0) shouldBe None
   }
 
+  "flatMap" in {
+    val numbers = Vector(0, 1, 2, 3)
+    val newNumbers = numbers.flatMap(Array.tabulate(_)(identity))
+    newNumbers shouldBe Vector(0, 0, 1, 0, 1, 2)
+  }
+
 }
