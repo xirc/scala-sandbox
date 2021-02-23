@@ -5,7 +5,7 @@ import testing.BaseSpec
 final class CollectionFunctionSpec extends BaseSpec {
 
   "collect" in {
-    val numbers = Vector.tabulate(1000)(i => i)
+    val numbers = Vector.tabulate(1000)(identity)
     val evenNumbers = numbers.collect {
       case n if n % 2 == 0 => n
     }
@@ -21,6 +21,11 @@ final class CollectionFunctionSpec extends BaseSpec {
   "drop" in {
     val numbers = Vector(0, 1, 2, 3, 4)
     numbers.drop(3) shouldBe Vector(3, 4)
+  }
+
+  "dropWhile" in {
+    val numbers = Vector.tabulate(10)(identity)
+    numbers.dropWhile(_ < 7) shouldBe Vector(7, 8, 9)
   }
 
 }
