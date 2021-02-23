@@ -40,4 +40,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.filter(_ % 2 == 1) shouldBe Vector(1, 3, 5)
   }
 
+  "filterNot" in {
+    val numbers = Vector(0, 1, 2, 3, 4, 5)
+    numbers.filterNot(_ % 2 == 0) shouldBe Vector(1, 3, 5)
+    numbers.filterNot(_ % 2 == 1) shouldBe Vector(0, 2, 4)
+  }
+
 }
