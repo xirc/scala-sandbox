@@ -18,4 +18,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     oddNumbers.forall(_ % 2 == 1) shouldBe true
   }
 
+  "drop" in {
+    val numbers = Vector(0, 1, 2, 3, 4)
+    numbers.drop(3) shouldBe Vector(3, 4)
+  }
+
 }
