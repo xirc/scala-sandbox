@@ -34,4 +34,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.exists(_ < 0) shouldBe false
   }
 
+  "filter" in {
+    val numbers = Vector(0, 1, 2, 3, 4, 5)
+    numbers.filter(_ % 2 == 0) shouldBe Vector(0, 2, 4)
+    numbers.filter(_ % 2 == 1) shouldBe Vector(1, 3, 5)
+  }
+
 }
