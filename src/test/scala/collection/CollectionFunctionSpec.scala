@@ -64,4 +64,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     newNumbers shouldBe Vector(0, 0, 1, 0, 1, 2)
   }
 
+  "flatten" in {
+    val numbers = Vector.tabulate(3, 3) { case (i, j) => i * j }
+    val newNumbers = numbers.flatten
+    newNumbers shouldBe Vector(0, 0, 0, 0, 1, 2, 0, 2, 4)
+  }
+
 }
