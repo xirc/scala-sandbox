@@ -52,4 +52,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.find(_ < 0) shouldBe None
   }
 
+  "findLast" in {
+    val numbers = Vector(0, 1, 2, 3, 4, 5)
+    numbers.findLast(_ > 1) shouldBe Some(5)
+    numbers.findLast(_ < 0) shouldBe None
+  }
+
 }
