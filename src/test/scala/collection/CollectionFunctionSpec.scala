@@ -28,4 +28,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.dropWhile(_ < 7) shouldBe Vector(7, 8, 9)
   }
 
+  "exists" in {
+    val numbers = Vector(0, 1, 2, 3, 4)
+    numbers.exists(_ > 1) shouldBe true
+    numbers.exists(_ < 0) shouldBe false
+  }
+
 }
