@@ -100,4 +100,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     sum shouldBe 6
   }
 
+  "groupBy" in {
+    val numbers = Vector.tabulate(10)(identity)
+    val numbersByModulo = numbers.groupBy(_ % 3)
+    numbersByModulo(0) shouldBe Vector(0, 3, 6, 9)
+    numbersByModulo(1) shouldBe Vector(1, 4, 7)
+    numbersByModulo(2) shouldBe Vector(2, 5, 8)
+  }
+
 }
