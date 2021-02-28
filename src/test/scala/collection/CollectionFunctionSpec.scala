@@ -176,4 +176,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[String].maxByOption(_.length) shouldBe None
   }
 
+  "min" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.min shouldBe 2
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].min
+    }
+  }
+
 }
