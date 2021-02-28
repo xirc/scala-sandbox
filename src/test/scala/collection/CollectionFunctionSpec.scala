@@ -91,4 +91,13 @@ final class CollectionFunctionSpec extends BaseSpec {
     sum shouldBe 17
   }
 
+  "foreach" in {
+    val numbers = Vector.tabulate(3)(_ + 1)
+    var sum = 0
+    numbers.foreach {
+      sum += _
+    }
+    sum shouldBe 6
+  }
+
 }
