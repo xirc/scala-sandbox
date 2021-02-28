@@ -108,4 +108,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbersByModulo(2) shouldBe Vector(2, 5, 8)
   }
 
+  "head" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.head shouldBe 2
+    a[NoSuchElementException] shouldBe thrownBy {
+      Vector.empty[Int].head
+    }
+  }
+
 }
