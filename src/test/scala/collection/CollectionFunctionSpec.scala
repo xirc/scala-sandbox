@@ -128,4 +128,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].isEmpty shouldBe true
   }
 
+  "last" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.last shouldBe 1
+    a[NoSuchElementException] shouldBe thrownBy {
+      Vector.empty[Int].last
+    }
+  }
+
 }
