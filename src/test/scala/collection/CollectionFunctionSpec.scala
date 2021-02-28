@@ -162,4 +162,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].maxOption shouldBe None
   }
 
+  "maxBy" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.maxBy(_.length) shouldBe "goodbye"
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[String].maxBy(_.length)
+    }
+  }
+
 }
