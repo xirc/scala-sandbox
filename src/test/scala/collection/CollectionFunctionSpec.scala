@@ -190,4 +190,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].minOption shouldBe None
   }
 
+  "minBy" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.minBy(_.length) shouldBe "abc"
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[String].minBy(_.length)
+    }
+  }
+
 }
