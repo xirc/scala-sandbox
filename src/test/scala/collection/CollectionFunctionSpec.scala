@@ -211,4 +211,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.mkString("[", ",", "]") shouldBe "[3,4,2]"
   }
 
+  "nonEmpty" in {
+    val numbers = Vector(1, 2)
+    numbers.nonEmpty shouldBe true
+    Vector.empty[Int].nonEmpty shouldBe false
+  }
+
 }
