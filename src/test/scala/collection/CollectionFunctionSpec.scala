@@ -198,4 +198,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     }
   }
 
+  "minByOption" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.minByOption(_.length) shouldBe Some("abc")
+    Vector.empty[String].minByOption(_.length) shouldBe None
+  }
+
 }
