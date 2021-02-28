@@ -142,4 +142,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].lastOption shouldBe None
   }
 
+  "map" in {
+    val numbers = Vector(2, 3, 1)
+    val doubledNumbers = numbers.map(_ * 2)
+    doubledNumbers shouldBe Vector(4, 6, 2)
+  }
+
 }
