@@ -70,4 +70,151 @@ final class CollectionFunctionSpec extends BaseSpec {
     newNumbers shouldBe Vector(0, 0, 0, 0, 1, 2, 0, 2, 4)
   }
 
+  "fold" in {
+    val numbers = Vector.tabulate(3)(_ + 1)
+    val sum = numbers.fold(0)(_ * 2 + _)
+    // ((0 * 2 + 1) * 2 + 2) * 2 + 3
+    sum shouldBe 11
+  }
+
+  "foldLeft" in {
+    val numbers = Vector.tabulate(3)(_ + 1)
+    val sum = numbers.foldLeft(0)(_ * 2 + _)
+    // ((0 * 2 + 1) * 2 + 2) * 2 + 3
+    sum shouldBe 11
+  }
+
+  "foldRight" in {
+    val numbers = Vector.tabulate(3)(_ + 1)
+    val sum = numbers.foldRight(0)(_ + 2 * _)
+    // (1 + 2 * (2 + 2 * 3))
+    sum shouldBe 17
+  }
+
+  "foreach" in {
+    val numbers = Vector.tabulate(3)(_ + 1)
+    var sum = 0
+    numbers.foreach {
+      sum += _
+    }
+    sum shouldBe 6
+  }
+
+  "groupBy" in {
+    val numbers = Vector.tabulate(10)(identity)
+    val numbersByModulo = numbers.groupBy(_ % 3)
+    numbersByModulo(0) shouldBe Vector(0, 3, 6, 9)
+    numbersByModulo(1) shouldBe Vector(1, 4, 7)
+    numbersByModulo(2) shouldBe Vector(2, 5, 8)
+  }
+
+  "head" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.head shouldBe 2
+    a[NoSuchElementException] shouldBe thrownBy {
+      Vector.empty[Int].head
+    }
+  }
+
+  "headOption" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.headOption shouldBe Some(2)
+    Vector.empty[Int].headOption shouldBe None
+  }
+
+  "isEmpty" in {
+    val numbers = Vector(1, 2)
+    numbers.isEmpty shouldBe false
+    Vector.empty[Int].isEmpty shouldBe true
+  }
+
+  "last" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.last shouldBe 1
+    a[NoSuchElementException] shouldBe thrownBy {
+      Vector.empty[Int].last
+    }
+  }
+
+  "lastOption" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.lastOption shouldBe Some(1)
+    Vector.empty[Int].lastOption shouldBe None
+  }
+
+  "map" in {
+    val numbers = Vector(2, 3, 1)
+    val doubledNumbers = numbers.map(_ * 2)
+    doubledNumbers shouldBe Vector(4, 6, 2)
+  }
+
+  "max" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.max shouldBe 4
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].max
+    }
+  }
+
+  "maxOption" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.maxOption shouldBe Some(4)
+    Vector.empty[Int].maxOption shouldBe None
+  }
+
+  "maxBy" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.maxBy(_.length) shouldBe "goodbye"
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[String].maxBy(_.length)
+    }
+  }
+
+  "maxByOption" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.maxByOption(_.length) shouldBe Some("goodbye")
+    Vector.empty[String].maxByOption(_.length) shouldBe None
+  }
+
+  "min" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.min shouldBe 2
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].min
+    }
+  }
+
+  "minOption" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.minOption shouldBe Some(2)
+    Vector.empty[Int].minOption shouldBe None
+  }
+
+  "minBy" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.minBy(_.length) shouldBe "abc"
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[String].minBy(_.length)
+    }
+  }
+
+  "minByOption" in {
+    val words = Vector("abc", "hello", "goodbye")
+    words.minByOption(_.length) shouldBe Some("abc")
+    Vector.empty[String].minByOption(_.length) shouldBe None
+  }
+
+  "mkString" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.mkString shouldBe "342"
+    numbers.mkString(",") shouldBe "3,4,2"
+    numbers.mkString("[", ",", "]") shouldBe "[3,4,2]"
+  }
+
+  "nonEmpty" in {
+    val numbers = Vector(1, 2)
+    numbers.nonEmpty shouldBe true
+    Vector.empty[Int].nonEmpty shouldBe false
+  }
+
 }
