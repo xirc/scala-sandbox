@@ -204,4 +204,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[String].minByOption(_.length) shouldBe None
   }
 
+  "mkString" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.mkString shouldBe "342"
+    numbers.mkString(",") shouldBe "3,4,2"
+    numbers.mkString("[", ",", "]") shouldBe "[3,4,2]"
+  }
+
 }
