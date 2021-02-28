@@ -136,4 +136,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     }
   }
 
+  "lastOption" in {
+    val numbers = Vector(2, 3, 1)
+    numbers.lastOption shouldBe Some(1)
+    Vector.empty[Int].lastOption shouldBe None
+  }
+
 }
