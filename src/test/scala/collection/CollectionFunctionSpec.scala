@@ -77,4 +77,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     sum shouldBe 11
   }
 
+  "foldLeft" in {
+    val numbers = Vector.tabulate(3)(_ + 1)
+    val sum = numbers.foldLeft(0)(_ * 2 + _)
+    // ((0 * 2 + 1) * 2 + 2) * 2 + 3
+    sum shouldBe 11
+  }
+
 }
