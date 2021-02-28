@@ -148,4 +148,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     doubledNumbers shouldBe Vector(4, 6, 2)
   }
 
+  "max" in {
+    val numbers = Vector(3, 4, 2)
+    numbers.max shouldBe 4
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].max
+    }
+  }
+
 }
