@@ -224,4 +224,13 @@ final class CollectionFunctionSpec extends BaseSpec {
     odd shouldBe Vector(1, 3, 5, 7, 9)
   }
 
+  "reduce" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduce(_ * 2 + _)
+    value shouldBe 11
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].reduce(_ * 2 + _)
+    }
+  }
+
 }
