@@ -249,4 +249,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     }
   }
 
+  "reduceLeftOption" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceLeftOption(_ * 2 + _)
+    value shouldBe Some(11)
+    Vector.empty[Int].reduceLeftOption(_ * 2 + _) shouldBe None
+  }
+
 }
