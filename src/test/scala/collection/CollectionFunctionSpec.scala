@@ -297,4 +297,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     xs shouldBe Vector(15, 14, 12, 9, 5, 0)
   }
 
+  "size" in {
+    Vector(1, 2, 3, 4).size shouldBe 4
+    Vector.empty[Int].size shouldBe 0
+  }
+
 }
