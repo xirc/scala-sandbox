@@ -277,4 +277,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers.reverse shouldBe Vector(3, 2, 1)
   }
 
+  "reverseIterator" in {
+    val xs = for (i <- Vector(1, 2, 3).reverseIterator) yield i * 2
+    xs.toVector shouldBe Vector(6, 4, 2)
+  }
+
 }
