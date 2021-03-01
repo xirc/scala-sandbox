@@ -272,4 +272,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].reduceRightOption(_ + _ * 2) shouldBe None
   }
 
+  "reverse" in {
+    val numbers = Vector(1, 2, 3)
+    numbers.reverse shouldBe Vector(3, 2, 1)
+  }
+
 }
