@@ -282,4 +282,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     xs.toVector shouldBe Vector(6, 4, 2)
   }
 
+  "scan" in {
+    val xs = Vector.tabulate(5)(_ + 1).scan(0)(_ + _)
+    xs shouldBe Vector(0, 1, 3, 6, 10, 15)
+  }
+
 }
