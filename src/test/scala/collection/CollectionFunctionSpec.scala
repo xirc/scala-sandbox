@@ -240,4 +240,13 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].reduceOption(_ * 2 + _) shouldBe None
   }
 
+  "reduceLeft" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceLeft(_ * 2 + _)
+    value shouldBe 11
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].reduceLeft(_ * 2 + _)
+    }
+  }
+
 }
