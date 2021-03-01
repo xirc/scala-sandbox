@@ -217,4 +217,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].nonEmpty shouldBe false
   }
 
+  "partition" in {
+    val numbers = Vector.tabulate(10)(identity)
+    val (even, odd) = numbers.partition(_ % 2 == 0)
+    even shouldBe Vector(0, 2, 4, 6, 8)
+    odd shouldBe Vector(1, 3, 5, 7, 9)
+  }
+
 }
