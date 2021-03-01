@@ -217,4 +217,89 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].nonEmpty shouldBe false
   }
 
+  "partition" in {
+    val numbers = Vector.tabulate(10)(identity)
+    val (even, odd) = numbers.partition(_ % 2 == 0)
+    even shouldBe Vector(0, 2, 4, 6, 8)
+    odd shouldBe Vector(1, 3, 5, 7, 9)
+  }
+
+  "reduce" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduce(_ * 2 + _)
+    value shouldBe 11
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].reduce(_ * 2 + _)
+    }
+  }
+
+  "reduceOption" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceOption(_ * 2 + _)
+    value shouldBe Some(11)
+    Vector.empty[Int].reduceOption(_ * 2 + _) shouldBe None
+  }
+
+  "reduceLeft" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceLeft(_ * 2 + _)
+    value shouldBe 11
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].reduceLeft(_ * 2 + _)
+    }
+  }
+
+  "reduceLeftOption" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceLeftOption(_ * 2 + _)
+    value shouldBe Some(11)
+    Vector.empty[Int].reduceLeftOption(_ * 2 + _) shouldBe None
+  }
+
+  "reduceRight" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceRight(_ + _ * 2)
+    value shouldBe 17
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].reduceRight(_ + _ * 2)
+    }
+  }
+
+  "reduceRightOption" in {
+    val numbers = Vector(1, 2, 3)
+    val value = numbers.reduceRightOption(_ + _ * 2)
+    value shouldBe Some(17)
+    Vector.empty[Int].reduceRightOption(_ + _ * 2) shouldBe None
+  }
+
+  "reverse" in {
+    val numbers = Vector(1, 2, 3)
+    numbers.reverse shouldBe Vector(3, 2, 1)
+  }
+
+  "reverseIterator" in {
+    val xs = for (i <- Vector(1, 2, 3).reverseIterator) yield i * 2
+    xs.toVector shouldBe Vector(6, 4, 2)
+  }
+
+  "scan" in {
+    val xs = Vector.tabulate(5)(_ + 1).scan(0)(_ + _)
+    xs shouldBe Vector(0, 1, 3, 6, 10, 15)
+  }
+
+  "scanLeft" in {
+    val xs = Vector.tabulate(5)(_ + 1).scanLeft(0)(_ + _)
+    xs shouldBe Vector(0, 1, 3, 6, 10, 15)
+  }
+
+  "scanRight" in {
+    val xs = Vector.tabulate(5)(_ + 1).scanRight(0)(_ + _)
+    xs shouldBe Vector(15, 14, 12, 9, 5, 0)
+  }
+
+  "size" in {
+    Vector(1, 2, 3, 4).size shouldBe 4
+    Vector.empty[Int].size shouldBe 0
+  }
+
 }
