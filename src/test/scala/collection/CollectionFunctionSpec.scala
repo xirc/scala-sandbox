@@ -122,6 +122,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].headOption shouldBe None
   }
 
+  "init" in {
+    val xs = Vector(1, 3, 2)
+    xs.init shouldBe Vector(1, 3)
+  }
+
   "isEmpty" in {
     val numbers = Vector(1, 2)
     numbers.isEmpty shouldBe false
@@ -300,6 +305,105 @@ final class CollectionFunctionSpec extends BaseSpec {
   "size" in {
     Vector(1, 2, 3, 4).size shouldBe 4
     Vector.empty[Int].size shouldBe 0
+  }
+
+  "slice" in {
+    Vector(1, 2, 3, 4).slice(1, 3) shouldBe Vector(2, 3)
+    Vector(1, 2, 3, 4).slice(1, 5) shouldBe Vector(2, 3, 4)
+  }
+
+  "sortBy" in {
+    case class Item(name: String, price: Int)
+    val xs = Vector(Item("a", 2), Item("b", 3), Item("c", 1))
+    xs.sortBy(_.price) shouldBe Vector(Item("c", 1), Item("a", 2), Item("b", 3))
+    xs.sortBy(_.name) shouldBe Vector(Item("a", 2), Item("b", 3), Item("c", 1))
+  }
+
+  "sorted" in {
+    val xs = Vector(3, 1, 2, 4)
+    xs.sorted shouldBe Vector(1, 2, 3, 4)
+  }
+
+  "sortWith" in {
+    case class Item(name: String, price: Int)
+    val xs = Vector(Item("a", 2), Item("b", 3), Item("c", 1))
+    xs.sortWith(_.price < _.price) shouldBe Vector(
+      Item("c", 1),
+      Item("a", 2),
+      Item("b", 3)
+    )
+  }
+
+  "tail" in {
+    val xs = Vector(2, 3, 1)
+    xs.tail shouldBe Vector(3, 1)
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].tail
+    }
+  }
+
+  "take" in {
+    val xs = Vector.tabulate(5)(identity)
+    xs.take(3) shouldBe Vector(0, 1, 2)
+    Vector.empty[Int].take(2) shouldBe Vector.empty
+  }
+
+  "takeRight" in {
+    val xs = Vector.tabulate(10)(identity)
+    xs.takeRight(3) shouldBe Vector(7, 8, 9)
+    Vector.empty[Int].takeRight(2) shouldBe Vector.empty
+  }
+
+  "takeWhile" in {
+    val xs = Vector(1, 2, 4, 3, 5)
+    xs.takeWhile(_ < 3) shouldBe Vector(1, 2)
+  }
+
+  "transpose" in {
+    val xs = Vector(1, 2, 3)
+    val ys = Vector(4, 5, 6)
+    Vector(xs, ys).transpose shouldBe Vector(
+      Vector(1, 4),
+      Vector(2, 5),
+      Vector(3, 6)
+    )
+  }
+
+  "unzip" in {
+    val vs = Vector(1 -> "one", 2 -> "two", 3 -> "three")
+    val expected = (Vector(1, 2, 3), Vector("one", "two", "three"))
+    vs.unzip shouldBe expected
+  }
+
+  "view" in {
+    val numbers =
+      (1 to 1_000_000_000).view
+        .filter(_ % 2 == 0)
+        .dropWhile(_ < 100)
+        .take(5)
+        .toVector
+    numbers shouldBe Vector(100, 102, 104, 106, 108)
+  }
+
+  "withFilter" in {
+    val numbers = (1 to 1_000).withFilter(_ % 2 == 0).map(_ / 2)
+    numbers shouldBe Vector.tabulate(500)(_ + 1)
+  }
+
+  "zip" in {
+    val xs = Vector(1, 2, 3)
+    val ys = Vector("one", "two", "three")
+    xs.zip(ys) shouldBe Vector(1 -> "one", 2 -> "two", 3 -> "three")
+  }
+
+  "zipWithIndex" in {
+    val xs = Vector("zero", "one", "two", "three")
+    xs.zipWithIndex shouldBe Vector(
+      "zero" -> 0,
+      "one" -> 1,
+      "two" -> 2,
+      "three" -> 3
+    )
   }
 
 }
