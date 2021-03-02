@@ -369,4 +369,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     )
   }
 
+  "unzip" in {
+    val vs = Vector(1 -> "one", 2 -> "two", 3 -> "three")
+    val expected = (Vector(1, 2, 3), Vector("one", "two", "three"))
+    vs.unzip shouldBe expected
+  }
+
 }
