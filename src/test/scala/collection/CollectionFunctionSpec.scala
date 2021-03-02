@@ -329,4 +329,12 @@ final class CollectionFunctionSpec extends BaseSpec {
     )
   }
 
+  "tail" in {
+    val xs = Vector(2, 3, 1)
+    xs.tail shouldBe Vector(3, 1)
+    a[UnsupportedOperationException] shouldBe thrownBy {
+      Vector.empty[Int].tail
+    }
+  }
+
 }
