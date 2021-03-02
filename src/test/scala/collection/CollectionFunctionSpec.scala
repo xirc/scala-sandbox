@@ -359,4 +359,14 @@ final class CollectionFunctionSpec extends BaseSpec {
     xs.takeWhile(_ < 3) shouldBe Vector(1, 2)
   }
 
+  "transpose" in {
+    val xs = Vector(1, 2, 3)
+    val ys = Vector(4, 5, 6)
+    Vector(xs, ys).transpose shouldBe Vector(
+      Vector(1, 4),
+      Vector(2, 5),
+      Vector(3, 6)
+    )
+  }
+
 }
