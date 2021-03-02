@@ -122,6 +122,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].headOption shouldBe None
   }
 
+  "init" in {
+    val xs = Vector(1, 3, 2)
+    xs.init shouldBe Vector(1, 3)
+  }
+
   "isEmpty" in {
     val numbers = Vector(1, 2)
     numbers.isEmpty shouldBe false
