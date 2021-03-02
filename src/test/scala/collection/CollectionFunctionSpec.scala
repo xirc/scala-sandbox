@@ -354,4 +354,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].takeRight(2) shouldBe Vector.empty
   }
 
+  "takeWhile" in {
+    val xs = Vector(1, 2, 4, 3, 5)
+    xs.takeWhile(_ < 3) shouldBe Vector(1, 2)
+  }
+
 }
