@@ -348,4 +348,10 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].take(2) shouldBe Vector.empty
   }
 
+  "takeRight" in {
+    val xs = Vector.tabulate(10)(identity)
+    xs.takeRight(3) shouldBe Vector(7, 8, 9)
+    Vector.empty[Int].takeRight(2) shouldBe Vector.empty
+  }
+
 }
