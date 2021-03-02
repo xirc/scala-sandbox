@@ -319,4 +319,14 @@ final class CollectionFunctionSpec extends BaseSpec {
     xs.sorted shouldBe Vector(1, 2, 3, 4)
   }
 
+  "sortWith" in {
+    case class Item(name: String, price: Int)
+    val xs = Vector(Item("a", 2), Item("b", 3), Item("c", 1))
+    xs.sortWith(_.price < _.price) shouldBe Vector(
+      Item("c", 1),
+      Item("a", 2),
+      Item("b", 3)
+    )
+  }
+
 }
