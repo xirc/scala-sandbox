@@ -314,4 +314,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     xs.sortBy(_.name) shouldBe Vector(Item("a", 2), Item("b", 3), Item("c", 1))
   }
 
+  "sorted" in {
+    val xs = Vector(3, 1, 2, 4)
+    xs.sorted shouldBe Vector(1, 2, 3, 4)
+  }
+
 }
