@@ -385,6 +385,11 @@ final class CollectionFunctionSpec extends BaseSpec {
     numbers shouldBe Vector(100, 102, 104, 106, 108)
   }
 
+  "withFilter" in {
+    val numbers = (1 to 1_000).withFilter(_ % 2 == 0).map(_ / 2)
+    numbers shouldBe Vector.tabulate(500)(_ + 1)
+  }
+
   "zip" in {
     val xs = Vector(1, 2, 3)
     val ys = Vector("one", "two", "three")
