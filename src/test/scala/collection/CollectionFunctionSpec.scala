@@ -302,4 +302,9 @@ final class CollectionFunctionSpec extends BaseSpec {
     Vector.empty[Int].size shouldBe 0
   }
 
+  "slice" in {
+    Vector(1, 2, 3, 4).slice(1, 3) shouldBe Vector(2, 3)
+    Vector(1, 2, 3, 4).slice(1, 5) shouldBe Vector(2, 3, 4)
+  }
+
 }
