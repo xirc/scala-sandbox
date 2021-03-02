@@ -396,4 +396,14 @@ final class CollectionFunctionSpec extends BaseSpec {
     xs.zip(ys) shouldBe Vector(1 -> "one", 2 -> "two", 3 -> "three")
   }
 
+  "zipWithIndex" in {
+    val xs = Vector("zero", "one", "two", "three")
+    xs.zipWithIndex shouldBe Vector(
+      "zero" -> 0,
+      "one" -> 1,
+      "two" -> 2,
+      "three" -> 3
+    )
+  }
+
 }
