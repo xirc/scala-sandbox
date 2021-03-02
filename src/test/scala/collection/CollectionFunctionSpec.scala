@@ -375,6 +375,16 @@ final class CollectionFunctionSpec extends BaseSpec {
     vs.unzip shouldBe expected
   }
 
+  "view" in {
+    val numbers =
+      (1 to 1_000_000_000).view
+        .filter(_ % 2 == 0)
+        .dropWhile(_ < 100)
+        .take(5)
+        .toVector
+    numbers shouldBe Vector(100, 102, 104, 106, 108)
+  }
+
   "zip" in {
     val xs = Vector(1, 2, 3)
     val ys = Vector("one", "two", "three")
