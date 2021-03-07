@@ -6,7 +6,7 @@ import java.util.concurrent.TimeoutException
 import java.util.concurrent.atomic.AtomicInteger
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
-import scala.concurrent.{Await, Future}
+import scala.concurrent.{Await, Future, Promise}
 import scala.util.{Failure, Success}
 
 final class FutureSpec extends BaseSpec {
@@ -145,21 +145,33 @@ final class FutureSpec extends BaseSpec {
 
   }
 
-  "firstCompletedOf" in {
+  "firstCompletedOf" should {
 
-    val success = Future.firstCompletedOf(
-      (1 to 3).map(x => future(x, x * 200.millis))
-    )
-    success.futureValue shouldBe 1
+    "success" in {
+      val promises = Seq.tabulate(2)(_ => Promise[Int]())
+      val success = Future.firstCompletedOf(promises.map(_.future))
+      promises.head.success(1)
+      Await.ready(promises.head.future, 1.seconds)
+      promises.last.success(2)
+      Await.ready(promises.last.future, 1.seconds)
+      success.futureValue shouldBe 1
+    }
 
-    val failure = Future.firstCompletedOf(
-      (3 to 0 by -1).map(x => future(100 / x, 100.millis + x * 200.millis))
-    )
-    failure.failed.futureValue shouldBe a[ArithmeticException]
+    "failure" in {
+      val promises = Seq.tabulate(2)(_ => Promise[Int]())
+      val failure = Future.firstCompletedOf(promises.map(_.future))
+      promises.last.failure(new RuntimeException())
+      Await.ready(promises.last.future, 1.seconds)
+      promises.head.success(1)
+      Await.ready(promises.head.future, 1.seconds)
+      failure.failed.futureValue shouldBe a[RuntimeException]
+    }
 
-    val neverCompleted = Future.firstCompletedOf(Vector.empty[Future[Int]])
-    a[TimeoutException] shouldBe thrownBy {
-      Await.result(neverCompleted, 2.seconds)
+    "timeout" in {
+      val neverCompleted = Future.firstCompletedOf(Vector.empty[Future[Int]])
+      a[TimeoutException] shouldBe thrownBy {
+        Await.result(neverCompleted, 1.seconds)
+      }
     }
 
   }
