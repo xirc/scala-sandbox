@@ -15,7 +15,7 @@ final class FutureSpec extends BaseSpec {
       value: => T,
       delay: FiniteDuration = 200.millis
   ): Future[T] = Future {
-    Thread.sleep(delay.toMillis)
+    Thread.sleep(scaled(delay).toMillis)
     value
   }
 
