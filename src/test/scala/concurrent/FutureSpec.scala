@@ -153,7 +153,7 @@ final class FutureSpec extends BaseSpec {
     success.futureValue shouldBe 1
 
     val failure = Future.firstCompletedOf(
-      (3 to 0 by -1).map(x => future(100 / x, x * 200.millis))
+      (3 to 0 by -1).map(x => future(100 / x, 100.millis + x * 200.millis))
     )
     failure.failed.futureValue shouldBe a[ArithmeticException]
 
