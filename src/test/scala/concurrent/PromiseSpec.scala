@@ -1,6 +1,5 @@
 package concurrent
 
-import org.scalatest.time.{Seconds, Span}
 import testing.BaseSpec
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -9,9 +8,6 @@ import scala.concurrent.duration.{DurationInt, FiniteDuration}
 import scala.util.Try
 
 final class PromiseSpec extends BaseSpec {
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(
-    scaled(Span(3, Seconds))
-  )
 
   private def defer[T](
       func: => T,

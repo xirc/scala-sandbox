@@ -1,6 +1,5 @@
 package concurrent
 
-import org.scalatest.time.{Seconds, Span}
 import testing.BaseSpec
 
 import java.util.concurrent.TimeoutException
@@ -11,10 +10,6 @@ import scala.concurrent.{Await, Future}
 import scala.util.{Failure, Success}
 
 final class FutureSpec extends BaseSpec {
-
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(
-    scaled(Span(3, Seconds))
-  )
 
   private def future[T](
       value: => T,
