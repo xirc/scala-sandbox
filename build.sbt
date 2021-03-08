@@ -16,6 +16,14 @@ ThisBuild / libraryDependencies ++= Seq(
 )
 
 addCommandAlias(
+  name = "ciFormat",
+  Seq(
+    "scalafmtSbt",
+    "scalafmtAll"
+  ).mkString(";")
+)
+
+addCommandAlias(
   "ciCheck",
   Seq(
     "clean",
