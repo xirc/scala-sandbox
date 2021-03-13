@@ -64,4 +64,24 @@ final class SortedSetSpec extends BaseSpec {
     s shouldBe a[mutable.TreeSet[_]]
   }
 
+  "range" in {
+    val s = mutable.SortedSet(1, 2, 3, 4, 5, 6)
+    s.range(2, 5).toSeq shouldBe Seq(2, 3, 4)
+  }
+  
+  "rangeFrom" in {
+    val s = mutable.SortedSet(1, 2, 3, 4, 5, 6)
+    s.rangeFrom(3).toSeq shouldBe Seq(3, 4, 5, 6)
+  }
+  
+  "rangeUntil" in {
+    val s = mutable.SortedSet(1, 2, 3, 4, 5, 6)
+    s.rangeUntil(4).toSeq shouldBe Seq(1, 2, 3)
+  }
+  
+  "rangeTo" in {
+    val s = mutable.SortedSet(1, 2, 3, 4, 5, 6)
+    s.rangeTo(4).toSeq shouldBe Seq(1, 2, 3, 4)
+  }
+
 }
