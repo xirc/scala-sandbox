@@ -151,7 +151,8 @@ final class FutureSpec extends BaseSpec {
       val promises = Seq.tabulate(2)(_ => Promise[Int]())
       val success = Future.firstCompletedOf(promises.map(_.future))
       promises.head.success(1)
-      Await.ready(promises.head.future, 1.seconds)
+      success.futureValue shouldBe 1
+
       promises.last.success(2)
       Await.ready(promises.last.future, 1.seconds)
       success.futureValue shouldBe 1
@@ -161,7 +162,8 @@ final class FutureSpec extends BaseSpec {
       val promises = Seq.tabulate(2)(_ => Promise[Int]())
       val failure = Future.firstCompletedOf(promises.map(_.future))
       promises.last.failure(new RuntimeException())
-      Await.ready(promises.last.future, 1.seconds)
+      failure.failed.futureValue shouldBe a[RuntimeException]
+
       promises.head.success(1)
       Await.ready(promises.head.future, 1.seconds)
       failure.failed.futureValue shouldBe a[RuntimeException]
