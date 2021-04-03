@@ -10,7 +10,7 @@ ThisBuild / scalacOptions ++= Seq(
 )
 
 ThisBuild / libraryDependencies ++= Seq(
-  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.1",
+  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.2",
   "org.scalactic" %% "scalactic" % "3.2.7",
   "org.scalatest" %% "scalatest" % "3.2.7" % "test"
 )
