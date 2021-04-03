@@ -12,7 +12,7 @@ ThisBuild / scalacOptions ++= Seq(
 ThisBuild / libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.1",
   "org.scalactic" %% "scalactic" % "3.2.6",
-  "org.scalatest" %% "scalatest" % "3.2.6" % "test"
+  "org.scalatest" %% "scalatest" % "3.2.7" % "test"
 )
 
 addCommandAlias(
