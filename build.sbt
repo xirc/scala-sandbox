@@ -1,7 +1,5 @@
-ThisBuild / name := "scala-sandbox"
 ThisBuild / version := "0.1"
 ThisBuild / scalaVersion := "2.13.5"
-
 ThisBuild / scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
@@ -31,8 +29,12 @@ addCommandAlias(
 val ScalaParallelCollectionsVersion = "1.0.2"
 val ScalaTestVersion = "3.2.7"
 
-ThisBuild / libraryDependencies ++= Seq(
-  "org.scala-lang.modules" %% "scala-parallel-collections" % ScalaParallelCollectionsVersion,
-  "org.scalactic" %% "scalactic" % ScalaTestVersion,
-  "org.scalatest" %% "scalatest" % ScalaTestVersion % "test"
-)
+lazy val core = (project in file("core"))
+  .settings(
+    name := "core",
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-parallel-collections" % ScalaParallelCollectionsVersion,
+      "org.scalactic" %% "scalactic" % ScalaTestVersion,
+      "org.scalatest" %% "scalatest" % ScalaTestVersion % Test
+    )
+  )
