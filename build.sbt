@@ -1,18 +1,12 @@
-name := "scala-sandbox"
-version := "0.1"
-scalaVersion := "2.13.5"
+ThisBuild / name := "scala-sandbox"
+ThisBuild / version := "0.1"
+ThisBuild / scalaVersion := "2.13.5"
 
 ThisBuild / scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
   "-Xlint",
   "-Werror"
-)
-
-ThisBuild / libraryDependencies ++= Seq(
-  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.2",
-  "org.scalactic" %% "scalactic" % "3.2.7",
-  "org.scalatest" %% "scalatest" % "3.2.7" % "test"
 )
 
 addCommandAlias(
@@ -32,4 +26,13 @@ addCommandAlias(
     "test:compile",
     "test"
   ).mkString(";")
+)
+
+val ScalaParallelCollectionsVersion = "1.0.2"
+val ScalaTestVersion = "3.2.7"
+
+ThisBuild / libraryDependencies ++= Seq(
+  "org.scala-lang.modules" %% "scala-parallel-collections" % ScalaParallelCollectionsVersion,
+  "org.scalactic" %% "scalactic" % ScalaTestVersion,
+  "org.scalatest" %% "scalatest" % ScalaTestVersion % "test"
 )
