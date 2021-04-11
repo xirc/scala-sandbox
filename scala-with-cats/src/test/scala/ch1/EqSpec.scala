@@ -9,7 +9,7 @@ import cats.syntax.option._
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 
-import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.Date
 
 final class EqSpec extends AnyWordSpecLike with Matchers {
@@ -45,7 +45,7 @@ final class EqSpec extends AnyWordSpecLike with Matchers {
       date1.getTime eqv date2.getTime
     }
 
-    val fmt = DateFormat.getDateInstance
+    val fmt = new SimpleDateFormat("yyyy/MM/dd")
     val x = fmt.parse("2021/04/11")
     val y = fmt.parse("2021/04/12")
 
