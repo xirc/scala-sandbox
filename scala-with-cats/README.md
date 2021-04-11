@@ -1,0 +1,1 @@
+[Scala with Cats](https://www.scalawithcats.com/dist/scala-with-cats.html)
