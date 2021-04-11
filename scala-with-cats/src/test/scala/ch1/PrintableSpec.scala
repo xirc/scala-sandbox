@@ -24,6 +24,13 @@ object Printable {
   )
 }
 
+object PrintableSyntax {
+  implicit class PrintableOps[A](val value: A) extends AnyVal {
+    def format()(implicit p: Printable[A]): String = Printable.format(value)
+    def print()(implicit p: Printable[A]): Unit = Printable.print(value)
+  }
+}
+
 final case class Cat(name: String, age: Int, color: String)
 object Cat {
   implicit val catPrintable: Printable[Cat] = new Printable[Cat] {
@@ -39,15 +46,15 @@ object Cat {
 final class PrintableSpec extends AnyWordSpecLike with Matchers {
 
   "format Cat(???)" in {
+    import PrintableSyntax._
     val cat = Cat("Garfield", 41, "ginger and black")
-    Printable.format(
-      cat
-    ) shouldBe "Garfield is a 41 year-old ginger and black cat."
+    cat.format() shouldBe "Garfield is a 41 year-old ginger and black cat."
   }
 
   "print Cat(???)" in {
+    import PrintableSyntax._
     val cat = Cat("Garfield", 41, "ginger and black")
-    Printable.print(cat)
+    cat.print()
   }
 
 }
