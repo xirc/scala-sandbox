@@ -1,4 +1,4 @@
-package collection.custom
+package collection.custom.capped
 
 import testing.BaseSpec
 
