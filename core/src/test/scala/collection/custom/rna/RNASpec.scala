@@ -2,7 +2,7 @@ package collection.custom.rna
 
 import testing.BaseSpec
 
-final class RNASpec extends BaseSpec {
+private final class RNASpec extends BaseSpec {
 
   import Base._
 
