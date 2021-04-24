@@ -27,7 +27,7 @@ addCommandAlias(
 )
 
 val ScalaParallelCollectionsVersion = "1.0.2"
-val ScalaTestVersion = "3.2.7"
+val ScalaTestVersion = "3.2.8"
 val CatsVersion = "2.6.0"
 
 lazy val core = (project in file("core"))
