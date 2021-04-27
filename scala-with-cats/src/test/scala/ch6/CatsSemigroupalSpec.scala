@@ -1,6 +1,7 @@
 package ch6
 
 import cats.Semigroupal
+import cats.syntax.apply._
 import cats.instances.option._
 import cats.instances.function._
 import org.scalatest.matchers.should.Matchers
@@ -45,6 +46,36 @@ final class CatsSemigroupalSpec extends AnyWordSpecLike with Matchers {
     val f2: Int => Double = _.toDouble * 3
     val f3: Int => Double = Semigroupal.map2(f1, f2)(_ + _)
     f3(1) shouldBe 5.0
+
+  }
+
+  "tupled" in {
+
+    (
+      Option(1),
+      Option("a")
+    ).tupled shouldBe Option((1, "a"))
+
+    (
+      Option(1),
+      Option("a"),
+      Option(false)
+    ).tupled shouldBe Option((1, "a", false))
+
+    (
+      Option(1),
+      None
+    ).tupled shouldBe None
+
+  }
+
+  "mapN" in {
+
+    (
+      Option(1),
+      Option(2),
+      Option(3)
+    ).mapN(_ + _ + _) shouldBe Option(6)
 
   }
 
