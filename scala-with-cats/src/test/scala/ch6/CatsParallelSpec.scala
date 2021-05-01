@@ -49,4 +49,17 @@ final class CatsParallelSpec extends AnyWordSpecLike with Matchers {
 
   }
 
+  "exercise Parallel List" in {
+
+    (List(1, 2), List(3, 4)).tupled shouldBe
+      List((1, 3), (1, 4), (2, 3), (2, 4))
+
+    (List(1, 2), List(3, 4)).parTupled shouldBe
+      List((1, 3), (2, 4))
+
+    (List(1, 2, 3), List(4, 5)).parTupled shouldBe
+      List((1, 4), (2, 5))
+
+  }
+
 }
