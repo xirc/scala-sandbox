@@ -2,10 +2,9 @@ package ch4
 
 import cats.Monad
 import cats.syntax.all._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CustomMonadSpec extends AnyWordSpecLike with Matchers {
+final class CustomMonadSpec extends BaseSpec {
 
   "exercise" in {
 

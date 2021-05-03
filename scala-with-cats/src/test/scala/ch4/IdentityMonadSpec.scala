@@ -1,9 +1,8 @@
 package ch4
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class IdentityMonadSpec extends AnyWordSpecLike with Matchers {
+final class IdentityMonadSpec extends BaseSpec {
 
   type Id[A] = A
   trait Monad[F[_]] {

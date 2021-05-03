@@ -1,10 +1,9 @@
 package ch4
 
 import cats.Eval
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsEvalSpec extends AnyWordSpecLike with Matchers {
+final class CatsEvalSpec extends BaseSpec {
 
   "now" in {
 

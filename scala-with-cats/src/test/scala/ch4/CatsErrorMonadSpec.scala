@@ -2,17 +2,11 @@ package ch4
 
 import cats.MonadError
 import cats.syntax.all._
-import org.scalatest.{EitherValues, TryValues}
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.util.Try
 
-final class CatsErrorMonadSpec
-    extends AnyWordSpecLike
-    with Matchers
-    with TryValues
-    with EitherValues {
+final class CatsErrorMonadSpec extends BaseSpec {
 
   def validateAdult[F[_]](
       age: Int

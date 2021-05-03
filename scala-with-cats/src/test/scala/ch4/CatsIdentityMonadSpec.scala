@@ -4,10 +4,9 @@ import cats.Id
 import cats.Monad
 import cats.syntax.functor._
 import cats.syntax.flatMap._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsIdentityMonadSpec extends AnyWordSpecLike with Matchers {
+final class CatsIdentityMonadSpec extends BaseSpec {
 
   def sumOfSquare[F[_]: Monad](a: F[Int], b: F[Int]): F[Int] = {
     for {

@@ -1,9 +1,8 @@
 package ch3
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class ContravariantFunctorSpec extends AnyWordSpecLike with Matchers {
+final class ContravariantFunctorSpec extends BaseSpec {
 
   trait Printable[A] { self =>
     def format(value: A): String

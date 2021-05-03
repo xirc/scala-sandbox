@@ -1,7 +1,6 @@
 package ch1
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object TypeClassBasicSpec {
 
@@ -72,7 +71,7 @@ object TypeClassBasicSpec {
 
 }
 
-final class TypeClassBasicSpec extends AnyWordSpecLike with Matchers {
+final class TypeClassBasicSpec extends BaseSpec {
   import TypeClassBasicSpec._
 
   "use interface object" in {

@@ -2,10 +2,9 @@ package ch4
 
 import cats.data.State
 import cats.syntax.all._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsStateSpec extends AnyWordSpecLike with Matchers {
+final class CatsStateSpec extends BaseSpec {
 
   type CalcState[A] = State[List[Int], A]
 

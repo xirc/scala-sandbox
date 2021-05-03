@@ -4,10 +4,9 @@ import cats.Semigroupal
 import cats.syntax.apply._
 import cats.instances.option._
 import cats.instances.function._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsSemigroupalSpec extends AnyWordSpecLike with Matchers {
+final class CatsSemigroupalSpec extends BaseSpec {
 
   "option" in {
 

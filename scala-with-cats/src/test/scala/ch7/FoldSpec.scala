@@ -1,9 +1,8 @@
 package ch7
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class FoldSpec extends AnyWordSpecLike with Matchers {
+final class FoldSpec extends BaseSpec {
 
   "foldLeft" in {
 

@@ -6,13 +6,12 @@ import cats.instances.long._
 import cats.instances.option._
 import cats.syntax.eq._
 import cats.syntax.option._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import java.text.SimpleDateFormat
 import java.util.Date
 
-final class EqSpec extends AnyWordSpecLike with Matchers {
+final class EqSpec extends BaseSpec {
 
   "equals int" in {
 

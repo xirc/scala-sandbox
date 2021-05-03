@@ -1,12 +1,11 @@
 package ch1
 
 import cats.Eq
-import cats.syntax.eq._
 import cats.instances.int._
-import cats.instances.string._
 import cats.instances.option._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import cats.instances.string._
+import cats.syntax.eq._
+import testing.BaseSpec
 
 object CatEqSpec {
 
@@ -21,7 +20,7 @@ object CatEqSpec {
 
 }
 
-final class CatEqSpec extends AnyWordSpecLike with Matchers {
+final class CatEqSpec extends BaseSpec {
   import CatEqSpec._
 
   private val cat1 = Cat("Garfield", 38, "orange and black")

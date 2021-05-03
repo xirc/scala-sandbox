@@ -1,7 +1,6 @@
 package ch2
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object SetMonoidSpec {
 
@@ -33,7 +32,7 @@ object SetMonoidSpec {
 
 }
 
-final class SetMonoidSpec extends AnyWordSpecLike with Matchers {
+final class SetMonoidSpec extends BaseSpec {
   import SetMonoidSpec._
 
   "union" in {

@@ -4,16 +4,11 @@ import cats.Monad
 import cats.instances.future._
 import cats.instances.list._
 import cats.instances.option._
-import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.concurrent._
 
-final class CatsMonadSpec
-    extends AnyWordSpecLike
-    with Matchers
-    with ScalaFutures {
+final class CatsMonadSpec extends BaseSpec {
 
   "option" in {
 

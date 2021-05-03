@@ -1,7 +1,6 @@
 package ch1
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object PrintableSpec {
 
@@ -50,7 +49,7 @@ object PrintableSpec {
 
 }
 
-final class PrintableSpec extends AnyWordSpecLike with Matchers {
+final class PrintableSpec extends BaseSpec {
   import PrintableSpec._
 
   "format Cat(???)" in {

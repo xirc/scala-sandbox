@@ -1,13 +1,11 @@
 package ch4
 
 import cats.syntax.either._
-import org.scalatest.EitherValues
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.util.Try
 
-final class EitherSpec extends AnyWordSpecLike with Matchers with EitherValues {
+final class EitherSpec extends BaseSpec {
 
   "right bias" in {
 

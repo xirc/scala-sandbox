@@ -1,11 +1,10 @@
 package ch4
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.annotation.nowarn
 
-final class MonadSpec extends AnyWordSpecLike with Matchers {
+final class MonadSpec extends BaseSpec {
 
   "try defining map using flatMap and pure" in {
 

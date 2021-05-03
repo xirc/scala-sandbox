@@ -2,10 +2,9 @@ package ch2
 
 import cats._
 import cats.syntax.semigroup._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsMonoid extends AnyWordSpecLike with Matchers {
+final class CatsMonoid extends BaseSpec {
 
   "string monoid" in {
 

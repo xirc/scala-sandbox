@@ -1,9 +1,8 @@
 package ch3
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class InvariantFunctorSpec extends AnyWordSpecLike with Matchers {
+final class InvariantFunctorSpec extends BaseSpec {
 
   trait Codec[A] { self =>
     def encode(value: A): String
