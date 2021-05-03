@@ -2,10 +2,9 @@ package ch4
 
 import cats.data.Reader
 import cats.syntax.all._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsReaderSpec extends AnyWordSpecLike with Matchers {
+final class CatsReaderSpec extends BaseSpec {
 
   "exercise" in {
 

@@ -3,10 +3,9 @@ package ch3
 import cats.instances.function._
 import cats.syntax.functor._
 import cats.syntax.contravariant._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class PartialUnificationSpec extends AnyWordSpecLike with Matchers {
+final class PartialUnificationSpec extends BaseSpec {
 
   val func1: Int => Double = _.toDouble
   val func2: Double => Double = _ * 2

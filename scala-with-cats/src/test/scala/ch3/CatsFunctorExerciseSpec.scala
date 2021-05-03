@@ -2,10 +2,9 @@ package ch3
 
 import cats.Functor
 import cats.syntax.functor._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsFunctorExerciseSpec extends AnyWordSpecLike with Matchers {
+final class CatsFunctorExerciseSpec extends BaseSpec {
 
   "Branching out with Functors" in {
 

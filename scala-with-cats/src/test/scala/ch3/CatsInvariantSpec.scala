@@ -4,10 +4,9 @@ import cats.Monoid
 import cats.instances.string._
 import cats.syntax.invariant._
 import cats.syntax.semigroup._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsInvariantSpec extends AnyWordSpecLike with Matchers {
+final class CatsInvariantSpec extends BaseSpec {
 
   implicit val symbolMonoid: Monoid[Symbol] = {
     Monoid[String].imap(Symbol.apply)(_.name)

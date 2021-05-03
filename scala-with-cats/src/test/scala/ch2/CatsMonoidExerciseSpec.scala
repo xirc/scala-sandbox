@@ -2,8 +2,7 @@ package ch2
 
 import cats.Monoid
 import cats.syntax.semigroup._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object CatsMonoidExerciseSpec {
 
@@ -13,7 +12,7 @@ object CatsMonoidExerciseSpec {
 
 }
 
-final class CatsMonoidExerciseSpec extends AnyWordSpecLike with Matchers {
+final class CatsMonoidExerciseSpec extends BaseSpec {
   import CatsMonoidExerciseSpec._
 
   "sum a list of integers" in {

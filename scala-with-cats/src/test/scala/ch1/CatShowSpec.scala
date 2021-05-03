@@ -4,8 +4,7 @@ import cats.Show
 import cats.instances.int._
 import cats.instances.string._
 import cats.syntax.show._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object CatShowSpec {
   final case class Cat(name: String, age: Int, color: String)
@@ -19,7 +18,7 @@ object CatShowSpec {
   }
 }
 
-final class CatShowSpec extends AnyWordSpecLike with Matchers {
+final class CatShowSpec extends BaseSpec {
   import CatShowSpec._
 
   "show Cat(???)" in {

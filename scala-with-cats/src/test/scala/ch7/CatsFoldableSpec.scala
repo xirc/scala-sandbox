@@ -5,10 +5,9 @@ import cats.instances.lazyList._
 import cats.instances.list._
 import cats.instances.option._
 import cats.syntax.foldable._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsFoldableSpec extends AnyWordSpecLike with Matchers {
+final class CatsFoldableSpec extends BaseSpec {
 
   "foldLeft with List" in {
 

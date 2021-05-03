@@ -4,10 +4,9 @@ import cats.arrow.FunctionK
 import cats.instances.either._
 import cats.syntax.apply._
 import cats.syntax.parallel._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsParallelSpec extends AnyWordSpecLike with Matchers {
+final class CatsParallelSpec extends BaseSpec {
 
   type ErrorOr[A] = Either[Vector[String], A]
 

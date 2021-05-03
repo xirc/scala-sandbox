@@ -1,14 +1,13 @@
 package ch5
 
 import cats.data.EitherT
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, Future}
 
-final class MonadTransformerSpec extends AnyWordSpecLike with Matchers {
+final class MonadTransformerSpec extends BaseSpec {
 
   type Response[A] = EitherT[Future, String, A]
 

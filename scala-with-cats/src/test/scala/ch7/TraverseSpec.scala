@@ -8,17 +8,12 @@ import cats.instances.option._
 import cats.instances.vector._
 import cats.syntax.applicative._
 import cats.syntax.apply._
-import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-final class TraverseSpec
-    extends AnyWordSpecLike
-    with Matchers
-    with ScalaFutures {
+final class TraverseSpec extends BaseSpec {
 
   val hostnames = List(
     "alpha.example.com",

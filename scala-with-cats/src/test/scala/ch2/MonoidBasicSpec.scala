@@ -1,7 +1,6 @@
 package ch2
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object MonoidBasicSpec {
 
@@ -20,7 +19,7 @@ object MonoidBasicSpec {
 
 }
 
-final class MonoidBasicSpec extends AnyWordSpecLike with Matchers {
+final class MonoidBasicSpec extends BaseSpec {
   import MonoidBasicSpec._
 
   "Integer addition" in {

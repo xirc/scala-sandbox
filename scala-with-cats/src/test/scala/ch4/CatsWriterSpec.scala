@@ -3,18 +3,13 @@ package ch4
 import cats.data.Writer
 import cats.instances.vector._
 import cats.syntax.all._
-import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.DurationInt
 
-final class CatsWriterSpec
-    extends AnyWordSpecLike
-    with Matchers
-    with ScalaFutures {
+final class CatsWriterSpec extends BaseSpec {
 
   type Logged[A] = Writer[Vector[String], A]
 

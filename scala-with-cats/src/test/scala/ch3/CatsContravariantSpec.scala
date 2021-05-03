@@ -1,11 +1,10 @@
 package ch3
 
-import cats.{Contravariant, Show}
 import cats.syntax.contravariant._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import cats.{Contravariant, Show}
+import testing.BaseSpec
 
-final class CatsContravariantSpec extends AnyWordSpecLike with Matchers {
+final class CatsContravariantSpec extends BaseSpec {
 
   "contramap" in {
 

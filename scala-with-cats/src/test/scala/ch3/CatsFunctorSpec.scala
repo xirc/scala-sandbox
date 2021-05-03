@@ -1,14 +1,13 @@
 package ch3
 
 import cats.Functor
+import cats.instances.function._
 import cats.instances.list._
 import cats.instances.option._
-import cats.instances.function._
 import cats.syntax.functor._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
-final class CatsFunctorSpec extends AnyWordSpecLike with Matchers {
+final class CatsFunctorSpec extends BaseSpec {
 
   "map" in {
 

@@ -1,7 +1,6 @@
 package ch2
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 object TruthMonoidSpec {
 
@@ -28,7 +27,7 @@ object TruthMonoidSpec {
 
 }
 
-final class TruthMonoidSpec extends AnyWordSpecLike with Matchers {
+final class TruthMonoidSpec extends BaseSpec {
   import TruthMonoidSpec._
 
   "and" in {

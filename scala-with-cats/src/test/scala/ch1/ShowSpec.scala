@@ -4,12 +4,11 @@ import cats.Show
 import cats.instances.int._
 import cats.instances.string._
 import cats.syntax.show._
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import testing.BaseSpec
 
 import java.util.Date
 
-final class ShowSpec extends AnyWordSpecLike with Matchers {
+final class ShowSpec extends BaseSpec {
 
   "use default instances" in {
 
