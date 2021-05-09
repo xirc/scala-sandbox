@@ -61,11 +61,6 @@ object DerivingInstances {
 
   }
 
-  implicit class CsvEncoderOps[V](val value: V) extends AnyVal {
-    def encoded(implicit enc: CsvEncoder[V]): List[String] =
-      enc.encode(value)
-  }
-
 }
 
 final class DerivingInstances extends BaseSpec {
@@ -73,30 +68,35 @@ final class DerivingInstances extends BaseSpec {
 
   "boolean" in {
 
-    true.encoded shouldBe List("yes")
-    false.encoded shouldBe List("no")
+    val encoder = CsvEncoder[Boolean]
+    encoder.encode(true) shouldBe List("yes")
+    encoder.encode(false) shouldBe List("no")
 
   }
 
   "string" in {
 
-    "abc".encoded shouldBe List("abc")
-    "".encoded shouldBe List("")
+    val encoder = CsvEncoder[String]
+    encoder.encode("abc") shouldBe List("abc")
+    encoder.encode("") shouldBe List("")
 
   }
 
   "int" in {
 
-    0.encoded shouldBe List("0")
-    1.encoded shouldBe List("1")
-    100.encoded shouldBe List("100")
-    (-10).encoded shouldBe List("-10")
+    val encoder = CsvEncoder[Int]
+    encoder.encode(0) shouldBe List("0")
+    encoder.encode(1) shouldBe List("1")
+    encoder.encode(100) shouldBe List("100")
+    encoder.encode(-10) shouldBe List("-10")
 
   }
 
   "repr" in {
 
-    ("abc" :: 123 :: true :: HNil).encoded shouldBe List("abc", "123", "yes")
+    val encoder = CsvEncoder[String :: Int :: Boolean :: HNil]
+    val instance = "abc" :: 123 :: true :: HNil
+    encoder.encode(instance) shouldBe List("abc", "123", "yes")
 
   }
 
@@ -104,8 +104,9 @@ final class DerivingInstances extends BaseSpec {
 
     case class ClassA(name: String, amount: Int, available: Boolean)
 
+    val encoder = CsvEncoder[ClassA]
     val instance = ClassA(name = "chair", amount = 12, available = false)
-    instance.encoded shouldBe List("chair", "12", "no")
+    encoder.encode(instance) shouldBe List("chair", "12", "no")
 
   }
 
@@ -115,9 +116,12 @@ final class DerivingInstances extends BaseSpec {
     final case class Square(size: Double) extends Shape
     final case class Circle(radius: Double) extends Shape
 
+    val encoder = CsvEncoder[Shape]
     val shapes = List(Square(3.0), Circle(4.0))
-    shapes.head.encoded shouldBe List("3.0")
-    shapes.last.encoded shouldBe List("4.0")
+    encoder.encode(shapes.head) shouldBe List("3.0")
+    encoder.encode(shapes.last) shouldBe List("4.0")
+
+  }
 
   }
 
