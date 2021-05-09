@@ -1,6 +1,6 @@
 package ch3
 
-import shapeless.{::, Generic, HList, HNil}
+import shapeless.{:+:, ::, CNil, Coproduct, Generic, HList, HNil, Inl, Inr}
 import testing.BaseSpec
 
 object DerivingInstances {
@@ -27,6 +27,9 @@ object DerivingInstances {
     implicit val intEncoder: CsvEncoder[Int] =
       instance(i => List(i.toString))
 
+    implicit val doubleEncoder: CsvEncoder[Double] =
+      instance(d => List(d.toString))
+
     implicit val hnilEncoder: CsvEncoder[HNil] =
       instance(_ => Nil)
 
@@ -43,6 +46,18 @@ object DerivingInstances {
         enc: CsvEncoder[R]
     ): CsvEncoder[A] =
       instance(a => enc.encode(gen.to(a)))
+
+    implicit val cnilEncoder: CsvEncoder[CNil] =
+      instance(_ => throw new Exception())
+
+    implicit def coproductEncoder[H, T <: Coproduct](implicit
+        hEncoder: CsvEncoder[H],
+        tEncoder: CsvEncoder[T]
+    ): CsvEncoder[H :+: T] =
+      instance {
+        case Inl(h) => hEncoder.encode(h)
+        case Inr(t) => tEncoder.encode(t)
+      }
 
   }
 
@@ -91,6 +106,18 @@ final class DerivingInstances extends BaseSpec {
 
     val instance = ClassA(name = "chair", amount = 12, available = false)
     instance.encoded shouldBe List("chair", "12", "no")
+
+  }
+
+  "coproduct" in {
+
+    sealed trait Shape extends Product with Serializable
+    final case class Square(size: Double) extends Shape
+    final case class Circle(radius: Double) extends Shape
+
+    val shapes = List(Square(3.0), Circle(4.0))
+    shapes.head.encoded shouldBe List("3.0")
+    shapes.last.encoded shouldBe List("4.0")
 
   }
 
