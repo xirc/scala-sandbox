@@ -1,7 +1,20 @@
 package ch3
 
-import shapeless.{:+:, ::, CNil, Coproduct, Generic, HList, HNil, Inl, Inr}
+import shapeless.{
+  :+:,
+  ::,
+  CNil,
+  Coproduct,
+  Generic,
+  HList,
+  HNil,
+  Inl,
+  Inr,
+  Lazy
+}
 import testing.BaseSpec
+
+import scala.annotation.nowarn
 
 object DerivingInstances {
 
@@ -34,28 +47,28 @@ object DerivingInstances {
       instance(_ => Nil)
 
     implicit def hlistEncoder[H, T <: HList](implicit
-        hEncoder: CsvEncoder[H],
+        hEncoder: Lazy[CsvEncoder[H]],
         tEncoder: CsvEncoder[T]
     ): CsvEncoder[H :: T] =
       instance { case h :: t =>
-        hEncoder.encode(h) ::: tEncoder.encode(t)
+        hEncoder.value.encode(h) ::: tEncoder.encode(t)
       }
 
     implicit def genericEncoder[A, R](implicit
         gen: Generic.Aux[A, R],
-        enc: CsvEncoder[R]
+        enc: Lazy[CsvEncoder[R]]
     ): CsvEncoder[A] =
-      instance(a => enc.encode(gen.to(a)))
+      instance(a => enc.value.encode(gen.to(a)))
 
     implicit val cnilEncoder: CsvEncoder[CNil] =
       instance(_ => throw new Exception())
 
     implicit def coproductEncoder[H, T <: Coproduct](implicit
-        hEncoder: CsvEncoder[H],
+        hEncoder: Lazy[CsvEncoder[H]],
         tEncoder: CsvEncoder[T]
     ): CsvEncoder[H :+: T] =
       instance {
-        case Inl(h) => hEncoder.encode(h)
+        case Inl(h) => hEncoder.value.encode(h)
         case Inr(t) => tEncoder.encode(t)
       }
 
@@ -94,6 +107,7 @@ final class DerivingInstances extends BaseSpec {
 
   "repr" in {
 
+    @nowarn("cat=lint-byname-implicit")
     val encoder = CsvEncoder[String :: Int :: Boolean :: HNil]
     val instance = "abc" :: 123 :: true :: HNil
     encoder.encode(instance) shouldBe List("abc", "123", "yes")
@@ -104,6 +118,7 @@ final class DerivingInstances extends BaseSpec {
 
     case class ClassA(name: String, amount: Int, available: Boolean)
 
+    @nowarn("cat=lint-byname-implicit")
     val encoder = CsvEncoder[ClassA]
     val instance = ClassA(name = "chair", amount = 12, available = false)
     encoder.encode(instance) shouldBe List("chair", "12", "no")
@@ -116,12 +131,30 @@ final class DerivingInstances extends BaseSpec {
     final case class Square(size: Double) extends Shape
     final case class Circle(radius: Double) extends Shape
 
+    @nowarn("cat=lint-byname-implicit")
     val encoder = CsvEncoder[Shape]
     val shapes = List(Square(3.0), Circle(4.0))
     encoder.encode(shapes.head) shouldBe List("3.0")
     encoder.encode(shapes.last) shouldBe List("4.0")
 
   }
+
+  "recursive" in {
+
+    sealed trait Tree[A] extends Product with Serializable
+    object Tree {
+      def branch[A](left: Tree[A], right: Tree[A]): Tree[A] =
+        Branch(left, right)
+      def leaf[A](value: A): Tree[A] =
+        Leaf(value)
+    }
+    final case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+    final case class Leaf[A](value: A) extends Tree[A]
+
+    @nowarn("cat=lint-byname-implicit")
+    val encoder = CsvEncoder[Tree[Int]]
+    val tree: Tree[Int] = Tree.branch(Tree.leaf(1), Tree.leaf(2))
+    encoder.encode(tree) shouldBe List("1", "2")
 
   }
 
