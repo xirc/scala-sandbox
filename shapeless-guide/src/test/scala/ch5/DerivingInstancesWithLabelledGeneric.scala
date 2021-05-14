@@ -1,7 +1,19 @@
 package ch5
 
 import shapeless.labelled.FieldType
-import shapeless.{::, HList, HNil, LabelledGeneric, Lazy, Witness}
+import shapeless.{
+  :+:,
+  ::,
+  CNil,
+  Coproduct,
+  HList,
+  HNil,
+  Inl,
+  Inr,
+  LabelledGeneric,
+  Lazy,
+  Witness
+}
 import testing.BaseSpec
 
 import scala.annotation.nowarn
@@ -88,6 +100,27 @@ object DerivingInstancesWithLabelledGeneric {
         val head = hEncoder.value.encode(hlist.head)
         val tail = tEncoder.encode(hlist.tail)
         JsonObject(tail.fields + (fieldName -> head))
+      }
+    }
+
+    implicit val cnilEncoder: JsonObjectEncoder[CNil] =
+      instance(_ => throw new Exception())
+
+    implicit def coproductObjectEncoder[K <: Symbol, H, T <: Coproduct](implicit
+        witnesses: Witness.Aux[K],
+        hEncoder: Lazy[JsonEncoder[H]],
+        tEncoder: JsonObjectEncoder[T]
+    ): JsonObjectEncoder[FieldType[K, H] :+: T] = {
+      val typeName = witnesses.value.name
+      instance {
+        case Inl(h) =>
+          JsonObject(
+            Map(
+              typeName -> hEncoder.value.encode(h)
+            )
+          )
+        case Inr(t) =>
+          tEncoder.encode(t)
       }
     }
 
@@ -185,6 +218,29 @@ final class DerivingInstancesWithLabelledGeneric extends BaseSpec {
 
     @nowarn("cat=lint-byname-implicit")
     val encoder: JsonEncoder[ClassA] = JsonEncoder[ClassA]
+    encoder.encode(instance) shouldBe expectedJsonValue
+
+  }
+
+  "coproduct" in {
+
+    sealed trait Shape
+    final case class Circle(radius: Int) extends Shape
+    final case class Square(size: Int) extends Shape
+
+    @nowarn("cat=lint-byname-implicit")
+    val encoder = JsonEncoder[Shape]
+
+    val instance = Circle(2)
+    val expectedJsonValue: JsonValue = JsonObject(
+      Map(
+        "Circle" -> JsonObject(
+          Map(
+            "radius" -> JsonNumber(2)
+          )
+        )
+      )
+    )
     encoder.encode(instance) shouldBe expectedJsonValue
 
   }
