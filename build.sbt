@@ -55,6 +55,7 @@ lazy val shapelessGuide = (project in file("shapeless-guide"))
     name := "shapeless-guide",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % ShapelessVersion,
+      "org.typelevel" %% "cats-core" % CatsVersion,
       "org.scalatest" %% "scalatest" % ScalaTestVersion % Test
     )
   )
