@@ -26,7 +26,7 @@ addCommandAlias(
   ).mkString(";")
 )
 
-val ScalaParallelCollectionsVersion = "1.0.2"
+val ScalaParallelCollectionsVersion = "1.0.3"
 val ScalaTestVersion = "3.2.8"
 val CatsVersion = "2.6.0"
 val ShapelessVersion = "2.3.6"
