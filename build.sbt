@@ -29,7 +29,7 @@ addCommandAlias(
 val ScalaParallelCollectionsVersion = "1.0.3"
 val ScalaTestVersion = "3.2.8"
 val CatsVersion = "2.6.0"
-val ShapelessVersion = "2.3.5"
+val ShapelessVersion = "2.3.6"
 
 lazy val core = (project in file("core"))
   .settings(
@@ -55,6 +55,7 @@ lazy val shapelessGuide = (project in file("shapeless-guide"))
     name := "shapeless-guide",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % ShapelessVersion,
+      "org.typelevel" %% "cats-core" % CatsVersion,
       "org.scalatest" %% "scalatest" % ScalaTestVersion % Test
     )
   )
