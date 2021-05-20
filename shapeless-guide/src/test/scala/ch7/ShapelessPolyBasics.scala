@@ -83,4 +83,17 @@ final class ShapelessPolyBasics extends BaseSpec {
 
   }
 
+  "Folding using Poly" in {
+
+    object sum extends Poly2 {
+      implicit val intIntCase: Case.Aux[Int, Int, Int] =
+        at(_ + _)
+      implicit val intStringCase: Case.Aux[Int, String, Int] =
+        at(_ + _.length)
+    }
+
+    (1 :: "abc" :: 2 :: HNil).foldLeft(0)(sum) shouldBe 6
+
+  }
+
 }
