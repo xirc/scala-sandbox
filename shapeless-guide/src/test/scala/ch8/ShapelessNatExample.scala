@@ -59,4 +59,21 @@ final class ShapelessNatExample extends BaseSpec {
 
   }
 
+  "HList.apply" in {
+
+    val hlist = 123 :: "abc" :: true :: HNil
+    hlist(Nat._0) shouldBe 123
+    hlist(Nat._1) shouldBe "abc"
+    hlist(Nat._2) shouldBe true
+
+  }
+
+  "HList.take" in {
+
+    val hlist = 123 :: "abc" :: true :: 1.23 :: HNil
+    val expected = "abc" :: true :: HNil
+    hlist.take(Nat._3).drop(Nat._1) shouldBe expected
+
+  }
+
 }
