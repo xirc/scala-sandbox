@@ -29,7 +29,7 @@ addCommandAlias(
 val ScalaParallelCollectionsVersion = "1.0.3"
 val ScalaTestVersion = "3.2.9"
 val CatsVersion = "2.6.1"
-val ShapelessVersion = "2.3.6"
+val ShapelessVersion = "2.3.7"
 
 lazy val core = (project in file("core"))
   .settings(
