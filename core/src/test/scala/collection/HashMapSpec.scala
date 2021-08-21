@@ -5,7 +5,7 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/HashMap.html HashMap]]
-  *  - mutable
+  *   - mutable
   */
 final class HashMapSpec extends BaseSpec {
   "TreeMap" should {

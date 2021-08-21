@@ -3,8 +3,8 @@ package collection
 import testing.BaseSpec
 
 /** [[https://www.scala-lang.org/api/current/scala/Array.html Array]]
-  *  - mutable
-  *  - fixed length
+  *   - mutable
+  *   - fixed length
   */
 final class ArraySpec extends BaseSpec {
 

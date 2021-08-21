@@ -5,8 +5,8 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/TreeMap.html TreeMap]]
-  *  - mutable
-  *  - sorted
+  *   - mutable
+  *   - sorted
   */
 final class TreeMapSpec extends BaseSpec {
 
