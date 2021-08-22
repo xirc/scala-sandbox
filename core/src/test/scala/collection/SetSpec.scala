@@ -5,7 +5,7 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/Set.html Set]]
-  *  - mutable
+  *   - mutable
   */
 final class SetSpec extends BaseSpec {
 

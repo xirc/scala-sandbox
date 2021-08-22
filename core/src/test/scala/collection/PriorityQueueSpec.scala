@@ -5,7 +5,7 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/PriorityQueue.html PriorityQueue]]
-  *  - mutable
+  *   - mutable
   */
 final class PriorityQueueSpec extends BaseSpec {
 

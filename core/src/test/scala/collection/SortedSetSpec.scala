@@ -5,7 +5,7 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/SortedSet.html SortedSet]]
-  *  - mutable
+  *   - mutable
   */
 final class SortedSetSpec extends BaseSpec {
 

@@ -2,7 +2,8 @@ package string.interpolation
 
 import testing.BaseSpec
 
-/** [[https://docs.scala-lang.org/overviews/core/string-interpolation.html String Interpolation]] */
+/** [[https://docs.scala-lang.org/overviews/core/string-interpolation.html String Interpolation]]
+  */
 final class StringInterpolationSpec extends BaseSpec {
 
   "s interpolator" in {

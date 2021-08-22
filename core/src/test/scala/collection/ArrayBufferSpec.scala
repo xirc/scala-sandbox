@@ -5,8 +5,8 @@ import testing.BaseSpec
 import scala.collection.mutable.ArrayBuffer
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/ArrayBuffer.html ArrayBuffer]]
-  *  - mutable
-  *  - variable-length
+  *   - mutable
+  *   - variable-length
   */
 final class ArrayBufferSpec extends BaseSpec {
 

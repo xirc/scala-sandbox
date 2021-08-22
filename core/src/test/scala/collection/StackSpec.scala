@@ -5,7 +5,7 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/Stack.html Stack]]
-  *  - mutable
+  *   - mutable
   */
 final class StackSpec extends BaseSpec {
 

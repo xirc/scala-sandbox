@@ -5,7 +5,7 @@ import testing.BaseSpec
 import scala.collection.mutable
 
 /** [[https://www.scala-lang.org/api/current/scala/collection/mutable/LinkedHashSet.html LinkedHashSet]]
-  *  - mutable
+  *   - mutable
   */
 final class LinkedHashSetSpec extends BaseSpec {
 
