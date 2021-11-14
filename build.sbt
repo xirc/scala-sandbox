@@ -3,7 +3,8 @@ ThisBuild / scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
   "-Xlint",
-  "-Werror"
+  "-Werror",
+  "-Xsource:3"
 )
 
 addCommandAlias(
