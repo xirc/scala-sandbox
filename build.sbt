@@ -27,7 +27,7 @@ addCommandAlias(
 )
 
 val ScalaParallelCollectionsVersion = "1.0.4"
-val ScalaTestVersion = "3.2.10"
+val ScalaTestVersion = "3.2.11"
 val CatsVersion = "2.7.0"
 val ShapelessVersion = "2.3.7"
 
