@@ -52,7 +52,7 @@ final class RecordOpsExample extends BaseSpec {
   "toMap" in {
 
     val sundae = generic.to(IceCream("Sundae", 1, false))
-    val expected = Map(
+    val expected = Map[Symbol, Any](
       Symbol("name") -> "Sundae",
       Symbol("numCherries") -> 1,
       Symbol("inCone") -> false
